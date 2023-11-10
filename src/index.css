@@ -53,13 +53,11 @@ button:hover {
   border-color: #001046;
 }
 
-button:focus.correctAns,
-button:focus-visible.correctAns {
+button.correctAns {
   outline: 4px auto #5ed62e;
 }
 
-button:focus,
-button:focus-visible {
+button.incorrectAns {
   outline: 4px auto #E2584D;
 }
 

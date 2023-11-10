@@ -34,25 +34,35 @@ function App() {
   // generate random placement for answer in position
   const setupNextWord = () => {
     let buttons = document.querySelectorAll('button');
-      // buttons.forEach(btn => {
-      //   btn.disable;
-      // });
+    for (let [index, btn] of buttons.entries()) {
+      if (index == winPosition) {
+        btn.classList.add("correctAns");
+      }
+      btn.disabled = true;
+    }
+
+      buttons.forEach(btn => {
+        btn.disabled = true;
+      });
     setTimeout(() => {
+      for (let [index, btn] of buttons.entries()) {
+        if (index == winPosition) {
+          btn.classList.remove("correctAns");
+        }
+        btn.classList.remove("incorrectAns");
+        btn.blur();
+        btn.disabled = false;
+      }
       getWordLength((wordLength) => wordLength = getMaxLength(maxLength));
       getNewWords((wordsAndClues) => wordsAndClues = getRandomWords(wordLength));
       getNewWinPosition((winPosition) => winPosition = getWinPosition());
-      buttons.forEach(btn => {
-        btn.blur();
-       //btn.enable;
-        
-      });
     }, 1500);
   };
 
   let buttonDiv = (win = 0, index) => {
     if (win) {
       return (
-          <button className='correctAns' 
+          <button
             onClick={() => {
                   setWinCount((winCount) => winCount + 1);
                   setupNextWord();
@@ -63,8 +73,9 @@ function App() {
     }
     else {
       return (
-          <button onClick={() => {
-            setLoseCount((loseCount) => loseCount + 1)
+          <button onClick={(event) => {
+            setLoseCount((loseCount) => loseCount + 1);
+            event.target.classList.add("incorrectAns");
             setupNextWord();
           }}>
           {wordsAndClues[index][0]}
@@ -83,7 +94,7 @@ function App() {
         <div id='lose-label' className='badge'>lose</div>
         <span id="win-score">{winCount}</span>:<span id='lose-score'>{loseCount}</span>
       </div>
-      <h1>{wordsAndClues[winPosition][0]}</h1>
+      <h1>{wordsAndClues[winPosition][1][0]}</h1>
       
       <div className="buttons-container">
         <div className="btn">
