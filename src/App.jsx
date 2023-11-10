@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Header from './Header.jsx'
-import Words from '../../data/data.json'
+import Words from '../data/data.json'
 //import useFetch from './useFetch';
 
 function App() {
