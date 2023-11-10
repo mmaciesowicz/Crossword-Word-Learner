@@ -33,10 +33,19 @@ function App() {
 
   // generate random placement for answer in position
   const setupNextWord = () => {
+    let buttons = document.querySelectorAll('button');
+      // buttons.forEach(btn => {
+      //   btn.disable;
+      // });
     setTimeout(() => {
       getWordLength((wordLength) => wordLength = getMaxLength(maxLength));
       getNewWords((wordsAndClues) => wordsAndClues = getRandomWords(wordLength));
       getNewWinPosition((winPosition) => winPosition = getWinPosition());
+      buttons.forEach(btn => {
+        btn.blur();
+       //btn.enable;
+        
+      });
     }, 1500);
   };
 
