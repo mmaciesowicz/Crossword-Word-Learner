@@ -3,9 +3,9 @@ import './App.css'
 import Header from './Header.jsx'
 
 function App() {
-  const [winCount, setWinCount] = useState(10)
-  const [loseCount, setLoseCount] = useState(5)
-
+  const [winCount, setWinCount] = useState(0)
+  const [loseCount, setLoseCount] = useState(0)
+  const currentClue = "CLUE"
   return (
     <>
     <Header />
@@ -14,15 +14,35 @@ function App() {
         <div id='lose-label' className='badge'>lose</div>
         <span id="win-score">{winCount}</span>:<span id='lose-score'>{loseCount}</span>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((winCount) => winCount + 1)}>
-          count is {winCount}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <h1>{currentClue}</h1>
+      <div className="buttons-container">
+        <div className="btn">
+          <button className='correctAns' onClick={() => setWinCount((winCount) => winCount + 1)}>
+              count is {winCount}
+          </button>
+        </div>
+          
+        <div className="btn">
+          <button onClick={() => setLoseCount((winCount) => winCount + 1)}>
+              count is {winCount}
+          </button>
+        </div>
+
+        <div className="btn">
+          <button onClick={() => setLoseCount((winCount) => winCount + 1)}>
+              count is {winCount}
+          </button>
+        </div>
+
+        <div className="btn">
+          <button onClick={() => setLoseCount((winCount) => winCount + 1)}>
+              count is {winCount}
+          </button>
+        </div>
       </div>
+      
+        
+        
       <p className="read-the-docs">
         Click an option!
       </p>

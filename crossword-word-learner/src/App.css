@@ -38,10 +38,19 @@
   right: -30px;
 }
 
-.card {
+.buttons-container {
   padding: 2em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  grid-auto-rows: 100px;
+}
+
+.btn {
+  padding: 1em;
 }
 
 .read-the-docs {
   color: #888;
 }
+
