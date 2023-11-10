@@ -13,16 +13,35 @@ function App() {
     return [randomWord.word,randomWord.clues];
   }
 
-  // generate words from length 2 to 10 inclusive
-  const maxLength = 9;
-  let wordLength = (Math.ceil(Math.random()*maxLength))+1;
+  // generate words from length 3 to 15 inclusive
+  const maxLength = 13;
+  let wordLength = (Math.ceil(Math.random()*maxLength))+2;
 
-  let currentWord = getRandomWord(wordLength)[0];
-  let currentClues = getRandomWord(wordLength)[1];
+  const getWord = getRandomWord(wordLength);
+  const currentWord = getWord[0];
+  const currentClues = getWord[1];
 
   // generate random placement for answer in position
-  const randomPosition = Math.ceil(Math.random()*4);
+  const winPosition = Math.ceil(Math.random()*4);
   
+  let buttonDiv = (win = 0, winWord = "") => {
+    if (win) {
+      return (
+      
+          <button className='correctAns' onClick={() => setWinCount((winCount) => winCount + 1)}>
+              {winWord}
+          </button>
+      )
+    }
+    else {
+      return (
+          <button onClick={() => setLoseCount((loseCount) => loseCount + 1)}>
+              {getRandomWord(wordLength)[0]}
+          </button>
+      )
+    }
+  };
+
   //const {data: word, isPending, error} = useFetch('http://localhost:3000')
 
   return (
@@ -37,28 +56,18 @@ function App() {
       
       <div className="buttons-container">
         <div className="btn">
-          <button className='correctAns' onClick={() => setWinCount((winCount) => winCount + 1)}>
-              count is {winCount}
-          </button>
+          {winPosition == 0 ? buttonDiv(1, currentWord) : buttonDiv(0, "")}
         </div>
-          
         <div className="btn">
-          <button onClick={() => setLoseCount((winCount) => winCount + 1)}>
-              count is {winCount}
-          </button>
+          {winPosition == 1 ? buttonDiv(1, currentWord) : buttonDiv(0, "")}
         </div>
-
         <div className="btn">
-          <button onClick={() => setLoseCount((winCount) => winCount + 1)}>
-              count is {winCount}
-          </button>
+          {winPosition == 2 ? buttonDiv(1, currentWord) : buttonDiv(0, "")}
         </div>
-
         <div className="btn">
-          <button onClick={() => setLoseCount((winCount) => winCount + 1)}>
-              count is {winCount}
-          </button>
+          {winPosition == 3 ? buttonDiv(1, currentWord) : buttonDiv(0, "")}
         </div>
+        
       </div>
       
       <p className="read-the-docs">
