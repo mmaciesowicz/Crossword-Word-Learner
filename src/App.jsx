@@ -56,7 +56,7 @@ function App() {
       getWordLength((wordLength) => wordLength = getMaxLength(maxLength));
       getNewWords((wordsAndClues) => wordsAndClues = getRandomWords(wordLength));
       getNewWinPosition((winPosition) => winPosition = getWinPosition());
-    }, 1500);
+    }, 3000);
   };
 
   let buttonDiv = (win = 0, index) => {
@@ -112,8 +112,8 @@ function App() {
         
       </div>
       
-      <p className="read-the-docs">
-        Click an option!
+      <p className="rules">
+        Given a crossword clue, click on the word corresponding to the clue!
       </p>
     </>
   )
