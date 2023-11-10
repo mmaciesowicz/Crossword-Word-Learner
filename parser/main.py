@@ -22,17 +22,31 @@ df = df.sort_values('answer', ascending=True)
 # remove duplicate answers and clues
 df_uniq = df.drop_duplicates()
 
+# get value of answer with the most letters
+mostLetters = df['answer'].str.len().max()
+
 #print(df.loc[df['answer'] == "ETNA"]['clue'])
 
 # hold count for number of appearances in df, and list of clues
 d = {}
 d = defaultdict(list)
 
+enumedD = {}
+
+for i in range(1,mostLetters+1):
+    enumedD[i] = [] 
+
+print(enumedD)
+
 for index, row in df_uniq.iterrows():
-    d[row['answer']].append(row['clue'])
+     d[row['answer']].append(row['clue'])
+
+for word in d:
+    enumedD[len(word)].append(json.loads(json.dumps({'word': word, 'clues': d[word]})))
+
 
 out_file = open("data/data.json", "w")
-json.dump(d,out_file,indent=4)
+json.dump(enumedD,out_file,indent=4)
 out_file.close()
 
 

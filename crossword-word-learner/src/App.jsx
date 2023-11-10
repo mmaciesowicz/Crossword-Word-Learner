@@ -1,11 +1,23 @@
 import { useState } from 'react'
 import './App.css'
 import Header from './Header.jsx'
+import Words from '../../data/data.json'
+//import useFetch from './useFetch';
 
 function App() {
   const [winCount, setWinCount] = useState(0)
   const [loseCount, setLoseCount] = useState(0)
-  const currentClue = "CLUE"
+  
+  // console.log(Words[4][20])
+  // const getRandomWord = (wordLength) => {
+  //   return Words[wordLength][]
+  // }
+  
+  let currentClue = "HI"
+  //const {data: word, isPending, error} = useFetch('http://localhost:3000')
+
+  //console.log(word[0]);
+
   return (
     <>
     <Header />
