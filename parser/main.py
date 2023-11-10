@@ -36,8 +36,6 @@ enumedD = {}
 for i in range(1,mostLetters+1):
     enumedD[i] = [] 
 
-print(enumedD)
-
 for index, row in df_uniq.iterrows():
      d[row['answer']].append(row['clue'])
 
