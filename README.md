@@ -15,17 +15,12 @@ Next, install package dependencies using [npm](https://nodejs.org/en/download):
 >   `npm install`
 >
 
-Build the program:
->
->   `npm run build`
->
-
-Navigate to /dist/ folder:
->
->   `cd dist`
->
-
 Run the program:
 >
 >   `npm run dev`
+>
+
+Build the program for production:
+>
+>   `npm run build`
 >
